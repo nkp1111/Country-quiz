@@ -1,4 +1,5 @@
 import React from 'react'
+import AdventureImage from '../assets/undraw_adventure_4hum 1.svg'
 
 function QuestionBox() {
   const answerList = ["a", "b", "c", "d"]
@@ -8,7 +9,7 @@ function QuestionBox() {
       <div className="options">
         {answerList.map((item, ind) => {
           return (
-            <div className={`option option-${ind}`}>
+            <div className={`option option-${ind}`} key={ind}>
               <span>{answerList[ind]}</span>
               <span className='option-text'> dummy option {item}</span>
             </div>
@@ -17,6 +18,9 @@ function QuestionBox() {
       </div>
       <div className="btn-holder">
         <button className="btn">Next</button>
+      </div>
+      <div className="img-holder">
+        <img src={AdventureImage} alt="game on" />
       </div>
     </section>
   )
