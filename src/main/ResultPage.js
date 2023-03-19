@@ -1,5 +1,7 @@
 import React from 'react'
 import WinnerImage from '../assets/undraw_winners_ao2o 2.svg'
+import ButtonHolder from '../components/buttonHolder'
+import ImageHolder from '../components/imageHolder'
 
 function ResultPage() {
   return (
@@ -10,12 +12,11 @@ function ResultPage() {
           You got <span className='correct'>4</span> correct answers
         </p>
       </div>
-      <div className="img-holder">
-        <img src={WinnerImage} alt="game over" />
-      </div>
-      <div className="btn-holder">
-        <button className="btn">Try again</button>
-      </div>
+      {/* button holder next button  */}
+      <ButtonHolder btnText="Try Again" />
+      {/* image holder  */}
+      <ImageHolder image={WinnerImage}
+        altText="game over" />
     </section>
   )
 }
