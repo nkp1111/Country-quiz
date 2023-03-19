@@ -1,23 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useReducer } from "react";
 import { getCountryData, getQuizData } from './controller/getData'
+import reducer from './reducer'
 
 const AppContext = React.createContext()
 
+const defaultState = {
+  quizData: [],
+  score: 0,
+  showAnswer: false,
+  correctAnswer: false,
+  showResult: false,
+}
+
 const AppProvider = ({ children }) => {
 
-  const [showResult, setShowResult] = useState(false)
+  const [state, dispatch] = useReducer(reducer, defaultState)
   const [allCountryData, setAllCountryData] = useState([])
-  const [quizData, setQuizData] = useState([])
-
-  // show result and retry on game over
-  const showResultOnGameOver = () => {
-    const nextBtn = document.querySelector(".btn")
-    if (nextBtn) {
-      nextBtn.addEventListener("click", () => {
-        setShowResult(!showResult)
-      })
-    }
-  }
 
   // set all country data 
   const handleCountryData = async () => {
@@ -27,20 +25,16 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  // useEffects for calling functions 
-  useEffect(() => {
-    showResultOnGameOver()
-  })
-
   useEffect(() => {
     handleCountryData()
   }, [])
+
 
   // get random quiz data
   const handleQuizData = () => {
     if (allCountryData) {
       let data = getQuizData({ countryData: allCountryData })
-      setQuizData(data)
+      dispatch({ type: "SET_QUIZ_DATA", payload: data })
     }
   }
 
@@ -48,14 +42,11 @@ const AppProvider = ({ children }) => {
     handleQuizData()
   }, [allCountryData])
 
-  console.log(quizData);
 
   return (
     <AppContext.Provider
       value={{
-        showResult,
-        setShowResult,
-        quizData,
+        ...state
       }}>
       {children}
     </AppContext.Provider>
