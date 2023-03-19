@@ -46,6 +46,8 @@ const AppProvider = ({ children }) => {
     handleQuizData()
   }, [allCountryData])
 
+  console.log(quizData);
+
   return (
     <AppContext.Provider
       value={{
