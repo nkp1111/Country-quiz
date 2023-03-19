@@ -63,3 +63,52 @@
 .question-box-section .btn:hover {
   opacity: 0.9;
 }
+
+/* section: result section */
+/* layout order  */
+.result-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+
+.content {
+  margin: 2.5rem 0;
+}
+
+.result-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--dark-blue);
+}
+
+.result-section .content {
+  order: 2;
+}
+
+.result-section .img-holder {
+  order: 1;
+}
+
+.result-section .btn-holder {
+  order: 3;
+}
+
+.result-section .final-score {
+  font-weight: 400;
+}
+
+.final-score span {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--green);
+}
+
+.result-section .btn {
+  border: 2px solid var(--dark-blue);
+  color: var(--dark-blue);
+  font-weight: 500;
+  padding: 0.5rem 3rem;
+}
