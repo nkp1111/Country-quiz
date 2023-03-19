@@ -53,6 +53,7 @@ const AppProvider = ({ children }) => {
       value={{
         showResult,
         setShowResult,
+        quizData,
       }}>
       {children}
     </AppContext.Provider>

@@ -2,9 +2,12 @@ import React from 'react'
 import AdventureImage from '../assets/undraw_adventure_4hum 1.svg'
 import ButtonHolder from '../components/buttonHolder'
 import ImageHolder from '../components/imageHolder'
+import useGlobalContext from '../context'
 import OptionBox from './OptionBox'
 
 function QuestionBox() {
+
+  const { quizData } = useGlobalContext()
 
   return (
     <section className='question-box-section'>
