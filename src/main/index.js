@@ -1,6 +1,7 @@
 import React from 'react'
 import QuestionBox from './QuestionBox'
 import ResultPage from './ResultPage'
+import "./main.css"
 
 function index() {
   return (

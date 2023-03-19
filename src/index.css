@@ -69,12 +69,33 @@ h6 {
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 18px;
+  background: url("./assets/background.png") no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
 }
 
 h1 {
   font-size: 2rem;
+  color: var(--very-light-red);
 }
 
 h2 {
   font-size: 1.5rem;
+  color: var(--blue);
+}
+
+section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.btn {
+  font-weight: 700;
 }
