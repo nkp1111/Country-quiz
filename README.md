@@ -26,8 +26,9 @@
   - [Built With](#built-with)
 - [Features](#features)
 - [How to use](#how-to-use)
-- [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
+- [Resources](#resources)
+- [Contact](#contact)
 
 ## Overview
 
@@ -37,6 +38,7 @@
 
 - [React](https://reactjs.org/)
 - [Bootstrap](https://getbootstrap.com/)
+- [GitHub gist](https://gist.github.com/amitjambusaria/b9adebcb4f256eae3dfa64dc9f1cc2ef) - for country, capital and flag json data
 
 ## Features
 
@@ -61,9 +63,17 @@ $ npm start
 
 - [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 - [Node.js](https://nodejs.org/)
+- [amitjambusaria (github gist)](https://gist.github.com/amitjambusaria/b9adebcb4f256eae3dfa64dc9f1cc2ef)
+
+## Resources
+
+### For countries, capitals, flags,... json information
+
+- [countrycode.dev](https://countrycode.dev/api/)
+- [github gist](https://gist.githubusercontent.com/amitjambusaria/b9adebcb4f256eae3dfa64dc9f1cc2ef/raw/6431d72439c8399b05d2b8e9d51153e5dee7ad3b/countries.json)
+- [rest countries](https://restcountries.com/v3.1/all?fields=name,flags,capital,currency,)
 
 ## Contact
 
-- Website [your-website.com](https://{your-web-site-link})
 - GitHub [nkp1111](https://github.com/nkp1111)
 - Twitter - [@nkp11111507](https://twitter.com/nkp11111507)

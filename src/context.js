@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
+import getCountryData from './controller/getData'
 
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
 
   const [showResult, setShowResult] = useState(false)
+  const [allCountryData, setAllCountryData] = useState([])
 
   // show result and retry on game over
   const showResultOnGameOver = () => {
@@ -14,9 +16,22 @@ const AppProvider = ({ children }) => {
     })
   }
 
+  // set all country data 
+  const handleCountryData = async () => {
+    let data = await getCountryData()
+    if (data) {
+      setAllCountryData(data)
+    }
+  }
+
+  // useEffects for calling functions 
   useEffect(() => {
     showResultOnGameOver()
   })
+
+  useEffect(() => {
+    handleCountryData()
+  }, [])
 
   return (
     <AppContext.Provider
