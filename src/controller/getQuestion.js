@@ -9,7 +9,8 @@ const getQuestion = (quizData) => {
     const questionTypes = ["capital", "currency", "flag"]
     const type = questionTypes[Math.floor(Math.random() * questionTypes.length)]
 
-    let questionItem
+    let question
+    let countryCode
     let options = quizData.map(item => {
       if (item) {
         return item.name
@@ -18,24 +19,25 @@ const getQuestion = (quizData) => {
 
     if (quizData[questionNum]) {
       if (type === "flag") {
-        questionItem = quizData[questionNum].flag
+        question = "Which country does this flag belong to?"
+        countryCode = quizData[questionNum].code.toLowerCase()
       }
       else if (type === "currency") {
-        questionItem = quizData[questionNum].currency.name
+        question = quizData[questionNum].currency.name + " is the currency of"
       }
       else {
-        questionItem = quizData[questionNum].capital
+        question = quizData[questionNum].capital + " is the capital of"
       }
     }
 
-    const question = {
-      "type": type,
-      "questionItem": questionItem,
+    const questionData = {
+      "countryCode": countryCode,
+      "question": question,
       "answerNum": questionNum,
       "options": options,
     }
 
-    return question
+    return questionData
   }
 }
 

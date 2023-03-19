@@ -9,12 +9,14 @@ import QuestionBox from './QuestionBox'
 function QuizBox() {
 
   const { quizData } = useGlobalContext()
+  const { countryCode, question, answerNum, options } = quizData
 
   return (
     <section className='question-box-section'>
       {/* question  */}
-      <QuestionBox type={quizData.type}
-        questionItem={quizData.questionItem} />
+      <QuestionBox countryCode={countryCode}
+        question={question}
+        ImageHolder={ImageHolder} />
       {/* options  */}
       <OptionBox />
       {/* button holder next button  */}

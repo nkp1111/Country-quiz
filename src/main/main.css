@@ -20,9 +20,16 @@
   transform: translate(0, -65%);
 }
 
-/* h2 heading */
-.question {
+/* question box */
+.question-box {
   margin-bottom: 1.5rem;
+}
+
+/* flag image  */
+.question+.img-holder {
+  position: static;
+  transform: none;
+  margin-bottom: 1rem;
 }
 
 /* 4 options  */
