@@ -12,9 +12,11 @@ const AppProvider = ({ children }) => {
   // show result and retry on game over
   const showResultOnGameOver = () => {
     const nextBtn = document.querySelector(".btn")
-    nextBtn.addEventListener("click", () => {
-      setShowResult(!showResult)
-    })
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        setShowResult(!showResult)
+      })
+    }
   }
 
   // set all country data 

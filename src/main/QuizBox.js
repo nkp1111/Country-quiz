@@ -4,14 +4,18 @@ import ButtonHolder from '../components/buttonHolder'
 import ImageHolder from '../components/imageHolder'
 import useGlobalContext from '../context'
 import OptionBox from './OptionBox'
+import QuestionBox from './QuestionBox'
 
-function QuestionBox() {
+function QuizBox() {
 
   const { quizData } = useGlobalContext()
 
   return (
     <section className='question-box-section'>
-      <h2 className='question'>This is where the question will go?</h2>
+      {/* question  */}
+      <QuestionBox type={quizData.type}
+        questionItem={quizData.questionItem} />
+      {/* options  */}
       <OptionBox />
       {/* button holder next button  */}
       <ButtonHolder btnText="Next" />
@@ -22,4 +26,4 @@ function QuestionBox() {
   )
 }
 
-export default QuestionBox
+export default QuizBox
