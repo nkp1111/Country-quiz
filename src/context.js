@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import getCountryData from './controller/getData'
+import { getCountryData, getQuizData } from './controller/getData'
 
 const AppContext = React.createContext()
 
@@ -7,6 +7,7 @@ const AppProvider = ({ children }) => {
 
   const [showResult, setShowResult] = useState(false)
   const [allCountryData, setAllCountryData] = useState([])
+  const [quizData, setQuizData] = useState([])
 
   // show result and retry on game over
   const showResultOnGameOver = () => {
@@ -32,6 +33,18 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     handleCountryData()
   }, [])
+
+  // get random quiz data
+  const handleQuizData = () => {
+    if (allCountryData) {
+      let data = getQuizData({ countryData: allCountryData })
+      setQuizData(data)
+    }
+  }
+
+  useEffect(() => {
+    handleQuizData()
+  }, [allCountryData])
 
   return (
     <AppContext.Provider

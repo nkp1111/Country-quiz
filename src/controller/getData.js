@@ -6,5 +6,31 @@ const getCountryData = async () => {
     .then(data => data)
 }
 
-export default getCountryData
+const getQuizData = ({ countryData, options = 4 }) => {
+  // randomly get data of country same as options defaults 4
+  if (options > 6) {
+    options = 6
+  }
+
+  if (options <= 0) {
+    options = 1
+  }
+
+  if (countryData) {
+    const countryCount = countryData.length
+    let quizData = []
+    for (let i = 0; i < options; i++) {
+      const randomInt = Math.floor(Math.random() * countryCount)
+      console.log(countryData[randomInt]);
+      quizData.push(countryData[randomInt])
+    }
+    console.log(quizData);
+    return quizData
+  }
+}
+
+export {
+  getCountryData,
+  getQuizData,
+}
 
