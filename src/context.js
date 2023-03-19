@@ -1,12 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
+
+  const [showResult, setShowResult] = useState(false)
+
+  // show result and retry on game over
+  const showResultOnGameOver = () => {
+    const nextBtn = document.querySelector(".btn")
+    nextBtn.addEventListener("click", () => {
+      setShowResult(!showResult)
+    })
+  }
+
+  useEffect(() => {
+    showResultOnGameOver()
+  })
+
   return (
     <AppContext.Provider
       value={{
-        first: "a"
+        showResult,
+        setShowResult,
       }}>
       {children}
     </AppContext.Provider>
