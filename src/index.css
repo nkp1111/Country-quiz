@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;     500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
 
 /* css reset  */
 /* https://www.joshwcomeau.com/css/custom-css-reset/ */
@@ -57,8 +57,10 @@ h6 {
   --blue: #2F527B;
   /* final heading result and button*/
   --dark-blue: #1D355D;
-  /* options  */
-  --very-light-blue: #6066d0;
+  /* options text */
+  --very-light-blue: rgba(96, 102, 208, 0.8);
+  /* options border  */
+  --very-light-blue2: rgba(96, 102, 208, 0.6);
 
   /* different option state  */
   --green: #60BF88;
@@ -72,6 +74,7 @@ body {
   background: url("./assets/background.png") no-repeat;
   background-position: center center;
   background-size: cover;
+  font-weight: 500;
 }
 
 h1,

@@ -4,7 +4,7 @@ import AdventureImage from '../assets/undraw_adventure_4hum 1.svg'
 function QuestionBox() {
   const answerList = ["a", "b", "c", "d"]
   return (
-    <section>
+    <section className='question-box-section'>
       <h2 className='question'>This is where the question will go?</h2>
       <div className="options">
         {answerList.map((item, ind) => {
