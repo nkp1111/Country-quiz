@@ -8,7 +8,7 @@ import QuestionBox from './QuestionBox'
 
 function QuizBox() {
 
-  const { quizData } = useGlobalContext()
+  const { quizData, showAnswer } = useGlobalContext()
   const { countryCode, question, answerNum, options } = quizData
 
   return (
@@ -20,7 +20,7 @@ function QuizBox() {
       {/* options  */}
       <OptionBox options={options} answerNum={answerNum} />
       {/* button holder next button  */}
-      <ButtonHolder btnText="Next" />
+      {showAnswer && <ButtonHolder btnText="Next" />}
       {/* image holder  */}
       <ImageHolder image={AdventureImage}
         altText="game on" />

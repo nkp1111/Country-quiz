@@ -8,7 +8,7 @@ const defaultState = {
   quizData: [],
   score: 0,
   showAnswer: false,
-  correctAnswer: false,
+  correctAnswer: true,
   showResult: false,
 }
 
@@ -41,6 +41,76 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     handleQuizData()
   }, [allCountryData])
+
+
+  //////////////////////////////////////////////////////
+  // functions for answer check 
+  // check answer 
+  const correctAnswerMark = (options, correctAnswer) => {
+    // add class for highlighting the correct answer
+    if (state.quizData.question) {
+      const correctOption = "option-" + correctAnswer
+      if (options) {
+        options.forEach(option => {
+          if (option.classList.contains("correct")) {
+            option.classList.remove("correct")
+          }
+          if (option.classList.contains(correctOption)) {
+            option.classList.add("correct")
+          }
+        })
+      }
+    }
+  }
+
+  const checkAnswer = (e, options) => {
+    // function: check answer, manage score and highlight answers
+
+    let alreadyChosen = false
+    options.forEach(option => {
+      if (option.classList.contains("chosen")) {
+        alreadyChosen = true
+      }
+    })
+    if (!alreadyChosen) {
+      // add highlight for chosen option
+      e.currentTarget.classList.add("chosen")
+      // only after question is not undefined
+      if (state.quizData.question) {
+        // if clicked answer matches the correct answer
+        if (e.currentTarget.classList[1] === "option-" + state.quizData.answerNum) {
+          dispatch({ type: "INCREASE_SCORE", payload: state.score + 1 })
+        } else {
+          dispatch({ type: "FALSE_ANSWER", payload: false })
+        }
+      }
+      // show answer after time 
+      setTimeout(() => {
+        dispatch({ type: "SHOW_HIDE_ANSWER" })
+      }, 100)
+    }
+    setTimeout(() => {
+      // add highlight for correct answer
+      if (state.quizData.question) {
+        correctAnswerMark(options, state.quizData.answerNum)
+      }
+    }, 100)
+  }
+
+  const handleAnswer = () => {
+    // add eventlistener for all options to check answer
+
+    const options = document.querySelectorAll(".option")
+    options.forEach(option => {
+      option.addEventListener("click", (e) => checkAnswer(e, options))
+    })
+  }
+
+  useEffect(() => {
+    handleAnswer()
+  })
+
+  //////////////////////////////////////////////////////
 
 
   return (
