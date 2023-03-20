@@ -8,7 +8,10 @@ const reducer = (state, action) => {
     return { ...state, score: payload }
   }
   else if (type === "FALSE_ANSWER") {
-    return { ...state, correctAnswer: payload }
+    return { ...state, answeredCorrectly: payload }
+  }
+  else if (type === "UPDATE_ANSWER_CHOSEN") {
+    return { ...state, chosenAnswer: payload }
   }
   else if (type === "SHOW_HIDE_ANSWER") {
     let oldAnswerState = state.showAnswer

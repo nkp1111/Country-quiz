@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useReducer } from "react";
 import { getCountryData, getQuizData } from './controller/getData'
+import { findOption } from './controller/gameState'
 import reducer from './reducer'
 
 const AppContext = React.createContext()
@@ -8,7 +9,8 @@ const defaultState = {
   quizData: [],
   score: 0,
   showAnswer: false,
-  correctAnswer: true,
+  answeredCorrectly: true,
+  chosenAnswer: -1,
   showResult: false,
 }
 
@@ -72,27 +74,24 @@ const AppProvider = ({ children }) => {
         alreadyChosen = true
       }
     })
+
     if (!alreadyChosen) {
       // add highlight for chosen option
       e.currentTarget.classList.add("chosen")
-      // only after question is not undefined
+    }
+
+    setTimeout(() => {
+      // add highlight for answers, increase score
       if (state.quizData.question) {
-        // if clicked answer matches the correct answer
-        if (e.currentTarget.classList[1] === "option-" + state.quizData.answerNum) {
+        correctAnswerMark(options, state.quizData.answerNum)
+        let answers = findOption()
+        dispatch({ type: "UPDATE_ANSWER_CHOSEN", payload: answers.chosen })
+        if (answers.chosen === answers.correct) {
           dispatch({ type: "INCREASE_SCORE", payload: state.score + 1 })
         } else {
           dispatch({ type: "FALSE_ANSWER", payload: false })
         }
-      }
-      // show answer after time 
-      setTimeout(() => {
         dispatch({ type: "SHOW_HIDE_ANSWER" })
-      }, 100)
-    }
-    setTimeout(() => {
-      // add highlight for correct answer
-      if (state.quizData.question) {
-        correctAnswerMark(options, state.quizData.answerNum)
       }
     }, 100)
   }
@@ -108,6 +107,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     handleAnswer()
+    console.log(state);
   })
 
   //////////////////////////////////////////////////////
