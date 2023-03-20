@@ -18,7 +18,9 @@ function QuizBox() {
         question={question}
         ImageHolder={ImageHolder} />
       {/* options  */}
-      <OptionBox options={options} answerNum={answerNum} />
+      <OptionBox options={options}
+        answerNum={answerNum}
+        ImageHolder={ImageHolder} />
       {/* button holder next button  */}
       {showAnswer && <ButtonHolder btnText="Next" />}
       {/* image holder  */}

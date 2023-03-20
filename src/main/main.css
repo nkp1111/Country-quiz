@@ -45,10 +45,23 @@
   align-items: center;
 }
 
-.option:hover {
-  background: var(--yellow);
+.option:hover,
+.option.chosen,
+.option.correct {
   border-color: transparent;
   color: #fff;
+}
+
+.option:hover {
+  background: var(--yellow);
+}
+
+.option.chosen {
+  background: var(--red);
+}
+
+.option.correct {
+  background: var(--green);
 }
 
 /* option text  */
@@ -56,6 +69,12 @@
   text-transform: capitalize;
   font-size: 1.5rem;
   margin-right: 2rem;
+}
+
+/* option icons  */
+.options-icons {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 /* next button  */

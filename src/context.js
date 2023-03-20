@@ -78,6 +78,7 @@ const AppProvider = ({ children }) => {
     if (!alreadyChosen) {
       // add highlight for chosen option
       e.currentTarget.classList.add("chosen")
+      dispatch({ type: "SHOW_HIDE_ANSWER" })
     }
 
     setTimeout(() => {
@@ -91,7 +92,6 @@ const AppProvider = ({ children }) => {
         } else {
           dispatch({ type: "FALSE_ANSWER", payload: false })
         }
-        dispatch({ type: "SHOW_HIDE_ANSWER" })
       }
     }, 100)
   }

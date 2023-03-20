@@ -9,7 +9,7 @@ function QuestionBox({ question, countryCode, ImageHolder }) {
     ${countryCode ? "d-flex flex-column-reverse" : ""}`}>
       <h2 className='question'>{question}</h2>
       {countryCode &&
-        <ImageHolder image={image} />}
+        <ImageHolder image={image} altText="flag" />}
     </div>
   )
 }
