@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useReducer } from "react";
 import { getCountryData, getQuizData } from './controller/getData'
-import { findOption } from './controller/gameState'
+import { findOption, removeHighlight } from './controller/gameState'
 import reducer from './reducer'
 
 const AppContext = React.createContext()
@@ -81,19 +81,17 @@ const AppProvider = ({ children }) => {
       dispatch({ type: "SHOW_HIDE_ANSWER" })
     }
 
-    setTimeout(() => {
-      // add highlight for answers, increase score
-      if (state.quizData.question) {
-        correctAnswerMark(options, state.quizData.answerNum)
-        let answers = findOption()
-        dispatch({ type: "UPDATE_ANSWER_CHOSEN", payload: answers.chosen })
-        if (answers.chosen === answers.correct) {
-          dispatch({ type: "INCREASE_SCORE", payload: state.score + 1 })
-        } else {
-          dispatch({ type: "FALSE_ANSWER", payload: false })
-        }
+    // add highlight for answers, increase score
+    if (state.quizData.question) {
+      correctAnswerMark(options, state.quizData.answerNum)
+      let answers = findOption()
+      dispatch({ type: "UPDATE_ANSWER_CHOSEN", payload: answers.chosen })
+      if (answers.chosen === answers.correct) {
+        dispatch({ type: "INCREASE_SCORE", payload: state.score + 1 })
+      } else {
+        dispatch({ type: "FALSE_ANSWER", payload: false })
       }
-    }, 100)
+    }
   }
 
   const handleAnswer = () => {
@@ -104,6 +102,26 @@ const AppProvider = ({ children }) => {
       option.addEventListener("click", (e) => checkAnswer(e, options))
     })
   }
+
+  const nextQuestionOrResult = () => {
+    if (state.showAnswer) {
+      const btn = document.querySelector(".btn")
+      btn.addEventListener("click", (e) => {
+        if (state.answeredCorrectly) {
+          removeHighlight()
+          dispatch({ type: "NEXT_ROUND", payload: state.score })
+          handleQuizData()
+        } else {
+          dispatch({ type: "SHOW_RESULT" })
+        }
+      })
+    }
+  }
+
+  useEffect(() => {
+    nextQuestionOrResult()
+    console.log(state);
+  })
 
   useEffect(() => {
     handleAnswer()

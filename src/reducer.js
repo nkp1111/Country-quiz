@@ -17,6 +17,12 @@ const reducer = (state, action) => {
     let oldAnswerState = state.showAnswer
     return { ...state, showAnswer: !oldAnswerState }
   }
+  else if (type === "NEXT_ROUND") {
+    return { ...state, quizData: [], score: payload, showAnswer: false, chosenAnswer: -1, }
+  }
+  else if (type === "SHOW_RESULT") {
+    return { ...state, showResult: true }
+  }
   else {
     throw new Error("Unknown Action type. Please check for misspell")
   }
