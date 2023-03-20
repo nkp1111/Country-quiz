@@ -118,9 +118,19 @@ const AppProvider = ({ children }) => {
     }
   }
 
+  const resetGame = () => {
+    if (state.showResult) {
+      const btn = document.querySelector(".btn")
+      btn.addEventListener("click", (e) => {
+        dispatch({ type: "GAME_RESET" })
+        handleQuizData()
+      })
+    }
+  }
+
   useEffect(() => {
     nextQuestionOrResult()
-    console.log(state);
+    resetGame()
   })
 
   useEffect(() => {

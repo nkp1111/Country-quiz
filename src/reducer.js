@@ -23,6 +23,9 @@ const reducer = (state, action) => {
   else if (type === "SHOW_RESULT") {
     return { ...state, showResult: true }
   }
+  else if (type === "GAME_RESET") {
+    return { ...state, quizData: [], score: 0, showAnswer: false, showResult: false, chosenAnswer: -1, answeredCorrectly: true }
+  }
   else {
     throw new Error("Unknown Action type. Please check for misspell")
   }
