@@ -1,0 +1,12 @@
+footer {
+  position: absolute;
+  bottom: 3vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-size: .75rem;
+  color: var(--very-light-red);
+}
+
+footer a {
+  color: inherit;
+}

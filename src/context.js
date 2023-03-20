@@ -135,7 +135,6 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     handleAnswer()
-    console.log(state);
   })
 
   //////////////////////////////////////////////////////

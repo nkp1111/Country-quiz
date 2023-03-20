@@ -103,3 +103,15 @@ section {
 .btn {
   font-weight: 700;
 }
+
+@media (max-width: 34.375rem) {
+  section {
+    width: 21.875rem;
+  }
+}
+
+@media (max-width: 23.4375rem) {
+  section {
+    width: 18.75rem;
+  }
+}
