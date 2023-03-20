@@ -5,12 +5,12 @@ import "./main.css"
 import useGlobalContext from '../context'
 
 function Index() {
-  const { showResult } = useGlobalContext()
+  const { showResult, score } = useGlobalContext()
   return (
     <main>
       <h1 className='main-heading'>Country Quiz</h1>
       {showResult
-        ? <ResultPage />
+        ? <ResultPage score={score} />
         : <QuizBox />}
     </main>
   )
