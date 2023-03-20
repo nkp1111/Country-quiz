@@ -38,6 +38,7 @@
 
 - [React](https://reactjs.org/)
 - [Bootstrap](https://getbootstrap.com/)
+- [react-icons](https://react-icons.github.io/react-icons/)
 
 ## Features
 
